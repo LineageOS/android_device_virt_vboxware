@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74ef37f8_7b4c22d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-10-07T18:09:46Z",
+      "side": 1,
+      "message": "doesn\u0027t work, suspicious logs:\n```\n10-07 17:59:54.709   437   446 E gralloc : gralloc_alloc bad format 43\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n10-07 17:59:54.709   437   446 E gralloc : gralloc_alloc bad format 56\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n10-07 17:59:54.709   437   446 E gralloc : gralloc_alloc bad format 59\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n10-07 17:59:54.709   437   446 E gralloc : gralloc_alloc bad format 43\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 43 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n10-07 17:59:54.709   437   437 E gralloc : gralloc_alloc bad format 56\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 56 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n10-07 17:59:54.709   437   446 E gralloc : gralloc_alloc bad format 59\n10-07 17:59:54.709   459   528 E GraphicBufferAllocator: Failed to allocate (4 x 4) layerCount 1 format 59 usage b00: 3\n10-07 17:59:54.709   459   528 E AHardwareBuffer: GraphicBuffer(w\u003d4, h\u003d4, lc\u003d1) failed (Unknown error -3), handle\u003d0x0\n```",
+      "revId": "762e23c6386a44ee34d28dbfaf2b21ffc2a40d13",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
