@@ -34,7 +34,7 @@ BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1 \
     nomodeset \
     androidboot.console=ttyS0 \
-    androidboot.graphics=swiftshader \
+    androidboot.graphics=mesa_lavapipe \
     androidboot.hardware=vboxware
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
