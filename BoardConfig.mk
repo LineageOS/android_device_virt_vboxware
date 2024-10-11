@@ -49,7 +49,7 @@ BOARD_VENDOR_KERNEL_MODULES := \
 endif
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/config/fstab.vboxware
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/configs/fstab/fstab.vboxware
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += \
@@ -57,4 +57,4 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 
 # VINTF
 DEVICE_MANIFEST_FILE += \
-    $(DEVICE_PATH)/config/manifest.xml
+    $(DEVICE_PATH)/configs/vintf/manifest.xml
