@@ -73,6 +73,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 endif
 
 # VINTF
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 ODM_MANIFEST_SKUS := virtualbox vmware
 ODM_MANIFEST_VIRTUALBOX_FILES := $(DEVICE_PATH)/configs/vintf/manifest_virtualbox.xml
 ODM_MANIFEST_VMWARE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_vmware.xml
