@@ -83,6 +83,7 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 endif
 
 # VINTF
+DEVICE_MANIFEST_FILE += $(DEVICE_PATH)/configs/vintf/manifest.xml
 ODM_MANIFEST_SKUS := display_drm display_fb
 ODM_MANIFEST_DISPLAY_DRM_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_display_drm.xml
 ODM_MANIFEST_DISPLAY_FB_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_display_fb.xml
