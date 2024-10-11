@@ -44,6 +44,9 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/init/init.recovery.vboxware.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.vboxware.rc
 
+# Shipping API level
+PRODUCT_SHIPPING_API_LEVEL := 33
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
