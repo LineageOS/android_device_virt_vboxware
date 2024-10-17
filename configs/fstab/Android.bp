@@ -1,6 +1,39 @@
+soong_config_module_type {
+    name: "vboxware_fstab_genrule",
+    module_type: "genrule",
+    config_namespace: "VBOXWARE_FSTAB",
+    variables: ["PARTITION_SCHEME"],
+    properties: ["srcs"],
+}
+
+soong_config_string_variable {
+    name: "PARTITION_SCHEME",
+    values: ["a", "ab"],
+}
+
+vboxware_fstab_genrule {
+    name: "gen_fstab_vboxware",
+    srcs: ["fstab.vboxware-common"],
+    out: ["fstab.vboxware"],
+    soong_config_variables: {
+        PARTITION_SCHEME: {
+            a: {
+                srcs: ["fstab.vboxware-a"],
+            },
+            ab: {
+                srcs: ["fstab.vboxware-ab"],
+            },
+            conditions_default: {
+                srcs: ["fstab.vboxware-a"],
+            },
+        },
+    },
+    cmd: "cat $(in) > $(out)",
+}
+
 prebuilt_etc {
     name: "fstab.vboxware",
-    src: "fstab.vboxware",
+    src: ":gen_fstab_vboxware",
     vendor: true,
     vendor_ramdisk_available: true,
 }

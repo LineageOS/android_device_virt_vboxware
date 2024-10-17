@@ -26,6 +26,13 @@ TARGET_GRUB_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
 TARGET_REFIND_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-install.conf
 
+# Fstab
+ifeq ($(AB_OTA_UPDATER),true)
+$(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,ab)
+else
+$(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,a)
+endif
+
 # GRUB
 TARGET_GRUB_ARCH := x86_64-efi
 
