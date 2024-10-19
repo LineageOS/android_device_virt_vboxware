@@ -1,5 +1,26 @@
 import /vendor/etc/init/hw/init.virt.rc
 
+on early-fs
+    symlink /dev/block/sda1 /dev/block/by-name/EFI
+    symlink /dev/block/sda3 /dev/block/by-name/misc
+
+on early-fs && property:ro.build.ab_update=false
+    symlink /dev/block/sda4 /dev/block/by-name/metadata
+    symlink /dev/block/sda5 /dev/block/by-name/cache
+    symlink /dev/block/sda6 /dev/block/by-name/boot
+    symlink /dev/block/sda7 /dev/block/by-name/recovery
+    symlink /dev/block/sda8 /dev/block/by-name/firmware
+    symlink /dev/block/sda9 /dev/block/by-name/persist
+
+on early-fs && property:ro.build.ab_update=true
+    symlink /dev/block/sda4 /dev/block/by-name/persist
+    symlink /dev/block/sda5 /dev/block/by-name/metadata
+    symlink /dev/block/sda6 /dev/block/by-name/firmware
+    symlink /dev/block/sda7 /dev/block/by-name/grub_boot_a
+    symlink /dev/block/sda8 /dev/block/by-name/grub_boot_b
+    symlink /dev/block/sda9 /dev/block/by-name/boot_a
+    symlink /dev/block/sda10 /dev/block/by-name/boot_b
+
 on fs
     mkdir /mnt/vendor/EFI 0770 root root
     mkdir /mnt/vendor/persist 0770 system system
