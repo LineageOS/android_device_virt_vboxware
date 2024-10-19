@@ -1,0 +1,5 @@
+# Block devices
+/dev/block/sda4		u:object_r:persist_block_device:s0
+/dev/block/sda5		u:object_r:metadata_block_device:s0
+/dev/block/sda[7-9]	u:object_r:boot_block_device:s0
+/dev/block/sda10	u:object_r:boot_block_device:s0

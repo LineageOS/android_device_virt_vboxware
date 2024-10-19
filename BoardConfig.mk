@@ -62,6 +62,14 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/configs/fstab/fstab.vboxware
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy/vendor
 
+ifeq ($(AB_OTA_UPDATER),true)
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy/vendor/ab
+else
+BOARD_VENDOR_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy/vendor/a
+endif
+
 # VINTF
 DEVICE_MANIFEST_FILE += \
     $(DEVICE_PATH)/configs/vintf/manifest.xml

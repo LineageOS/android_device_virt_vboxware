@@ -1,0 +1,6 @@
+# Block devices
+/dev/block/sda4		u:object_r:metadata_block_device:s0
+/dev/block/sda5		u:object_r:cache_block_device:s0
+/dev/block/sda6		u:object_r:boot_block_device:s0
+/dev/block/sda7		u:object_r:recovery_block_device:s0
+/dev/block/sda9		u:object_r:persist_block_device:s0

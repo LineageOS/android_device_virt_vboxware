@@ -1,6 +1,4 @@
 # Block devices
 /dev/block/sda2		u:object_r:super_block_device:s0
 /dev/block/sda3		u:object_r:misc_block_device:s0
-/dev/block/sda4		u:object_r:metadata_block_device:s0
-/dev/block/sda5		u:object_r:cache_block_device:s0
 /dev/block/sdb		u:object_r:userdata_block_device:s0
