@@ -18,13 +18,13 @@ vboxware_fstab_genrule {
     soong_config_variables: {
         PARTITION_SCHEME: {
             a: {
-                srcs: ["fstab.vboxware-a"],
+                srcs: [":fstab.virt-a"],
             },
             ab: {
-                srcs: ["fstab.vboxware-ab"],
+                srcs: [":fstab.virt-ab"],
             },
             conditions_default: {
-                srcs: ["fstab.vboxware-a"],
+                srcs: [":fstab.virt-a"],
             },
         },
     },
