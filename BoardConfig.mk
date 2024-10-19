@@ -25,8 +25,7 @@ TARGET_ARCH_VARIANT := sandybridge
 # Boot manager
 TARGET_EFI_BOOT_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/boot/*.nsh)
 TARGET_EFI_INSTALL_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/install/*.nsh)
-TARGET_GRUB_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
-TARGET_GRUB_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
+TARGET_GRUB_BOOT_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
 TARGET_REFIND_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-install.conf
 
