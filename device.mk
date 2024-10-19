@@ -4,6 +4,9 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# A/B
+AB_OTA_UPDATER := false
+
 # Inherit from common
 $(call inherit-product, device/virt/virt-common/virt-common.mk)
 
