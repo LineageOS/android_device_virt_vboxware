@@ -13,7 +13,10 @@ soong_config_string_variable {
 
 vboxware_fstab_genrule {
     name: "gen_fstab_vboxware",
-    srcs: ["fstab.vboxware-common"],
+    srcs: [
+        "fstab.vboxware-common",
+        ":fstab.virt-common",
+    ],
     out: ["fstab.vboxware"],
     soong_config_variables: {
         PARTITION_SCHEME: {
