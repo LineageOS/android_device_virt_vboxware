@@ -32,22 +32,21 @@ else
 $(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,a)
 endif
 
+# Graphics (Mesa)
+BOARD_GPU_DRIVERS := vmwgfx
+BOARD_USES_DRM_GRALLOC := true
+
 # GRUB
 TARGET_GRUB_ARCH := x86_64-efi
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1 \
+    console=tty0 \
     androidboot.console=ttyS0 \
-    androidboot.graphics=swiftshader \
     androidboot.hardware=vboxware \
-    androidboot.partition_map=sdb,userdata
-
-BOARD_KERNEL_CMDLINE_BOOT := \
-    nomodeset
-
-BOARD_KERNEL_CMDLINE_RECOVERY := \
-    console=tty0
+    androidboot.partition_map=sdb,userdata \
+    audit=0 androidboot.selinux=permissive androidboot.insecure_adb=1
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
 
