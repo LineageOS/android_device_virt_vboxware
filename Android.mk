@@ -31,4 +31,12 @@ prebuilt-kernel-repo: $(INSTALLED_PREBUILT_KERNEL_REPO_KERNEL_TARGET)
 endif # $(TARGET_KERNEL_SOURCE)/Makefile
 endif # LINEAGE_BUILD
 
+# Fstab
+
+INSTALLED_RAMDISK_FSTAB_TARGET := $(TARGET_RAMDISK_OUT)/fstab.vboxware
+$(INSTALLED_RAMDISK_FSTAB_TARGET):
+	cat $(VIRT_COMMON_PATH)/configs/fstab/fstab.virt-common $(VIRT_COMMON_PATH)/configs/fstab/fstab.virt-a $(DEVICE_PATH)/configs/fstab/fstab.vboxware-common > $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(INSTALLED_RAMDISK_FSTAB_TARGET)
+
 endif

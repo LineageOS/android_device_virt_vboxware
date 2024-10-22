@@ -41,14 +41,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/.emptyfile:$(TARGET_COPY_OUT_VENDOR)/usr/keylayout/VirtualBox_USB_Tablet.kl
 
 # Kernel
-TARGET_PREBUILT_KERNEL_USE ?= 6.1
-TARGET_PREBUILT_KERNEL_DIR := device/virt/kernel-vboxware/$(TARGET_PREBUILT_KERNEL_USE)
-TARGET_KERNEL_SOURCE := kernel/virt/virtio
+TARGET_KERNEL_SOURCE := kernel/virt/virtio-old
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
     $(warning Using source built kernel)
-else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
-    PRODUCT_COPY_FILES += $(TARGET_PREBUILT_KERNEL_DIR)/kernel:kernel
-    $(warning Using prebuilt kernel from $(TARGET_PREBUILT_KERNEL_DIR)/kernel)
 endif
 
 # Recovery
