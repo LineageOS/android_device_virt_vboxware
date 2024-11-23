@@ -2,3 +2,7 @@
 /dev/block/sda2		u:object_r:super_block_device:s0
 /dev/block/sda3		u:object_r:misc_block_device:s0
 /dev/block/sdb		u:object_r:userdata_block_device:s0
+
+# Same Process HAL
+/vendor/lib(64)?/hw/mapper\.minigbm_vboxware\.so		u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libminigbm_gralloc4_vboxware_utils\.so		u:object_r:same_process_hal_file:s0
