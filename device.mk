@@ -19,10 +19,10 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 # Graphics (Gralloc)
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator-service.minigbm \
-    android.hardware.graphics.mapper@4.0-impl.minigbm \
-    gralloc.minigbm \
-    mapper.minigbm
+    android.hardware.graphics.allocator-service.minigbm_vboxware \
+    android.hardware.graphics.mapper@4.0-impl.minigbm_vboxware \
+    gralloc.minigbm_vboxware \
+    mapper.minigbm_vboxware
 
 # Init
 PRODUCT_COPY_FILES += \
