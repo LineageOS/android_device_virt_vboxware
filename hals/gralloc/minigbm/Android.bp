@@ -50,6 +50,7 @@ filegroup {
         "virtgpu.c",
         "virtgpu_cross_domain.c",
         "virtgpu_virgl.c",
+        "vmwgfx.c",
     ],
 }
 
@@ -146,7 +147,9 @@ cc_defaults {
 cc_library_shared {
     name: "libminigbm_gralloc_vboxware",
     defaults: ["vboxware_minigbm_cros_gralloc_library_defaults"],
-    cflags: ["-DHAS_DMABUF_SYSTEM_HEAP"],
+    cflags: [
+        "-DDRV_VMWGFX",
+    ],
 }
 
 cc_library_shared {
