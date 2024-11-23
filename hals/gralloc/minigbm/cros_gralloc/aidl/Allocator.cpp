@@ -198,7 +198,7 @@ ndk::ScopedAStatus Allocator::isSupported(const BufferDescriptorInfo& descriptor
 }
 
 ndk::ScopedAStatus Allocator::getIMapperLibrarySuffix(std::string* outResult) {
-    *outResult = "minigbm";
+    *outResult = "minigbm_vboxware";
     return ndk::ScopedAStatus::ok();
 }
 
