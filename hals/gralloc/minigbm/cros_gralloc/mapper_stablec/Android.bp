@@ -26,7 +26,7 @@ package {
 cc_library_shared {
     name: "mapper.minigbm_vboxware",
     defaults: ["vboxware_minigbm_gralloc4_common_defaults"],
-    vintf_fragments: ["mapper.minigbm_vboxware.xml"],
+    //vintf_fragments: ["mapper.minigbm_vboxware.xml"],
     shared_libs: [
         "android.hardware.graphics.allocator-V2-ndk",
         "libminigbm_gralloc_vboxware",

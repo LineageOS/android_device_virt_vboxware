@@ -28,7 +28,7 @@ cc_binary {
     defaults: ["vboxware_minigbm_cros_gralloc_defaults"],
     relative_install_path: "hw",
     init_rc: ["allocator.vboxware.rc"],
-    vintf_fragments: ["allocator.vboxware.xml"],
+    //vintf_fragments: ["allocator.vboxware.xml"],
     vendor: true,
     shared_libs: [
         "android.hardware.graphics.allocator-V2-ndk",

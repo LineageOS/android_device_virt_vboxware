@@ -20,6 +20,7 @@ TARGET_ARCH_VARIANT := sandybridge
 # Boot manager
 TARGET_EFI_BOOT_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/boot/*.nsh)
 TARGET_EFI_INSTALL_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/install/*.nsh)
+TARGET_GRUB_BOOT_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
 TARGET_REFIND_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-install.conf
 
@@ -39,7 +40,6 @@ TARGET_GRUB_ARCH := x86_64-efi
 # Kernel
 BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1 \
-    console=tty0 \
     androidboot.console=ttyS0 \
     androidboot.hardware=vboxware \
     androidboot.partition_map=sdb,userdata
@@ -72,5 +72,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 endif
 
 # VINTF
-DEVICE_MANIFEST_FILE += \
-    $(DEVICE_PATH)/configs/vintf/manifest.xml
+ODM_MANIFEST_SKUS := virtualbox vmware
+ODM_MANIFEST_VIRTUALBOX_FILES := $(DEVICE_PATH)/configs/vintf/manifest_virtualbox.xml
+ODM_MANIFEST_VMWARE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_vmware.xml

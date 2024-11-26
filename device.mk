@@ -11,11 +11,9 @@ DEVICE_PATH := device/virt/vboxware
 
 # Graphics (Composer)
 PRODUCT_PACKAGES += \
+    android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.composer@2.4-service \
     hwcomposer.drm
-
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.hardware.hwcomposer=drm
 
 # Graphics (Gralloc)
 PRODUCT_PACKAGES += \
@@ -23,6 +21,11 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.mapper@4.0-impl.minigbm_vboxware \
     gralloc.minigbm_vboxware \
     mapper.minigbm_vboxware
+
+PRODUCT_PACKAGES += \
+    android.hardware.graphics.allocator@2.0-impl \
+    android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.mapper@2.0-impl-2.1
 
 # Init
 PRODUCT_COPY_FILES += \
@@ -58,3 +61,7 @@ PRODUCT_SOONG_NAMESPACES += \
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
     fstab.vboxware.vendor_ramdisk
+
+# Vendor service manager
+PRODUCT_PACKAGES += \
+    vndservicemanager
