@@ -62,6 +62,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
+# Tablet to multitouch
+PRODUCT_PACKAGES += \
+    tablet2multitouch_vboxware
+
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
     fstab.vboxware.vendor_ramdisk
