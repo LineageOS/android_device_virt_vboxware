@@ -4,3 +4,6 @@
 
 # SD card (recovery only)
 /dev/block/sdc /sdcard vfat ro,defaults recoveryonly
+
+# VirtualBox Shared Folder
+share /mnt/vendor/shared vboxsf ro,defaults nofail

@@ -55,6 +55,9 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/*.ko)
 endif
 
+# Properties
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
+
 # Recovery
 TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_vboxware
 TARGET_RECOVERY_PIXEL_FORMAT := BGRX_8888
