@@ -1,0 +1,12 @@
+cc_binary {
+    name: "tablet2multitouch_vboxware",
+    srcs: [
+        "tablet2multitouch_vboxware.c",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libtablet2multitouch",
+    ],
+    init_rc: ["tablet2multitouch_vboxware.rc"],
+    vendor: true
+}
