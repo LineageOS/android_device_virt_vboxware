@@ -55,6 +55,9 @@ BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/*.ko)
 endif
 
+# Properties
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
+
 # Recovery
 TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_vboxware
 TARGET_RECOVERY_PIXEL_FORMAT := BGRX_8888
@@ -70,6 +73,9 @@ else
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy/vendor/a
 endif
+
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/public
 
 # VINTF
 ODM_MANIFEST_SKUS := virtualbox vmware

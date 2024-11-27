@@ -1,0 +1,1 @@
+genfscon vboxsf / u:object_r:vboxsf:s0
