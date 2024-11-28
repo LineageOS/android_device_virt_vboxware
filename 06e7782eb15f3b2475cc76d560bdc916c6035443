@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1027e33e_d6f965cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 33662
+      },
+      "writtenOn": "2024-11-28T13:58:32Z",
+      "side": 1,
+      "message": "sorry I forgot to tell you this, but I think that it\u0027s better if you remove the file and then add a header lib under src/gallium/drivers/svga/include in Mesa source \nhttps://gitlab.freedesktop.org/mesa/mesa/-/tree/main/src/gallium/drivers/svga/include?ref_type\u003dheads\n\nIMO use Mesa one to keep the header updated with it\u0027s own Gallium svga is a preferable choice",
+      "revId": "06e7782eb15f3b2475cc76d560bdc916c6035443",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
