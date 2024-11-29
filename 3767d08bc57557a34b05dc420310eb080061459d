@@ -16,6 +16,24 @@
       "message": "Really not sure if this is proper fix",
       "revId": "3767d08bc57557a34b05dc420310eb080061459d",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f9553e_9bb27a4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2024-11-29T03:04:28Z",
+      "side": 1,
+      "message": "```\ncore/dumpconfig.mk:53:OUT_DIR :\u003d out\ncore/envsetup.mk:517:TARGET_OUT :\u003d $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)\n```",
+      "parentUuid": "b1b5bc15_65a7586f",
+      "revId": "3767d08bc57557a34b05dc420310eb080061459d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ]
 }
