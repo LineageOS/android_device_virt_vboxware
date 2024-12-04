@@ -8,14 +8,17 @@ soong_config_module_type {
 
 soong_config_string_variable {
     name: "PARTITION_SCHEME",
-    values: ["a", "ab"],
+    values: [
+        "a",
+        "ab",
+    ],
 }
 
 vboxware_fstab_genrule {
     name: "gen_fstab_vboxware",
     srcs: [
-        "fstab.vboxware-common",
         ":fstab.virt-common",
+        "fstab.vboxware-common",
     ],
     out: ["fstab.vboxware"],
     soong_config_variables: {
