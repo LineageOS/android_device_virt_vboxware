@@ -59,8 +59,8 @@ filegroup {
 
     srcs: [
         "cros_gralloc/cros_gralloc_buffer.cc",
-        "cros_gralloc/cros_gralloc_helpers.cc",
         "cros_gralloc/cros_gralloc_driver.cc",
+        "cros_gralloc/cros_gralloc_helpers.cc",
     ],
 }
 
@@ -73,14 +73,14 @@ cc_defaults {
     name: "vboxware_minigbm_defaults",
 
     cflags: [
-        "-D_GNU_SOURCE=1",
         "-D_FILE_OFFSET_BITS=64",
+        "-D_GNU_SOURCE=1",
         "-Wall",
-        "-Wsign-compare",
-        "-Wpointer-arith",
-        "-Wcast-qual",
         "-Wcast-align",
+        "-Wcast-qual",
         "-Wno-unused-parameter",
+        "-Wpointer-arith",
+        "-Wsign-compare",
     ],
 
     product_variables: {
@@ -118,9 +118,9 @@ cc_defaults {
         "libdmabufheap",
         "libdrm",
         "libgralloctypes",
+        "liblog",
         "libnativewindow",
         "libsync",
-        "liblog",
     ],
 }
 

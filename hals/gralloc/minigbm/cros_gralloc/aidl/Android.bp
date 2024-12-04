@@ -38,8 +38,8 @@ cc_binary {
         "libgralloctypes",
         "libhidlbase",
         "liblog",
-        "libminigbm_gralloc_vboxware",
         "libminigbm_gralloc4_vboxware_utils",
+        "libminigbm_gralloc_vboxware",
     ],
     static_libs: [
         "libaidlcommonsupport",
@@ -52,7 +52,7 @@ cc_binary {
 
 filegroup {
     name: "allocator.minigbm_vboxware.rc",
-    srcs: ["allocator.vboxware.rc"]
+    srcs: ["allocator.vboxware.rc"],
 }
 
 prebuilt_etc {
