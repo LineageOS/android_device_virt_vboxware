@@ -43,3 +43,14 @@ prebuilt_etc {
     vendor: true,
     vendor_ramdisk_available: true,
 }
+
+prebuilt_etc {
+    name: "fstab.vboxware.recovery",
+    srcs: [
+        ":gen_fstab_vboxware",
+    ],
+    dsts: [
+        "recovery.fstab",
+    ],
+    recovery: true,
+}

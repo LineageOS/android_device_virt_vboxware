@@ -67,7 +67,6 @@ $(call soong_config_set,VIRT_PREINSTALL_CHECK,DRM_CARD_NAME,vmwgfx)
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/configs/properties/vendor.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_vboxware
 TARGET_RECOVERY_PIXEL_FORMAT := BGRX_8888
 
 # SELinux
