@@ -8,7 +8,9 @@
 TARGET_BOOT_MANAGER := grub
 
 # Inherit from common
+WITH_GMS := true
 include device/virt/virt-common/BoardConfigVirtCommon.mk
+WITH_GMS :=
 
 USES_DEVICE_VIRT_VBOXWARE := true
 
@@ -24,6 +26,9 @@ TARGET_GRUB_BOOT_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 TARGET_REFIND_BOOT_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-boot.conf
 TARGET_REFIND_INSTALL_CONFIG := $(DEVICE_PATH)/bootmgr/rEFInd/refind-install.conf
+
+# Build
+BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 
 # Fstab
 ifeq ($(AB_OTA_UPDATER),true)
@@ -55,6 +60,12 @@ else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
 BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/*.ko)
 endif
+
+# Native bridge
+TARGET_NATIVE_BRIDGE_ARCH := arm64
+TARGET_NATIVE_BRIDGE_ARCH_VARIANT := armv8-a
+TARGET_NATIVE_BRIDGE_CPU_VARIANT := generic
+TARGET_NATIVE_BRIDGE_ABI := arm64-v8a
 
 # Recovery
 TARGET_RECOVERY_FSTAB_GENRULE := gen_fstab_vboxware
