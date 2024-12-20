@@ -9,6 +9,13 @@ $(call inherit-product, device/virt/virt-common/virt-common.mk)
 
 DEVICE_PATH := device/virt/vboxware
 
+# Google Apps
+PRODUCT_PACKAGES += \
+    GmsOverlay \
+    GmsSettingsOverlay \
+    GmsSettingsProviderOverlay \
+    GmsSetupWizardOverlay
+
 # Graphics (Composer)
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
@@ -49,6 +56,22 @@ else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
     $(warning Using prebuilt kernel from $(TARGET_PREBUILT_KERNEL_DIR)/kernel)
 endif
 
+# Native bridge
+include frameworks/libs/native_bridge_support/native_bridge_support.mk
+
+PRODUCT_SOONG_NAMESPACES += \
+    frameworks/libs/native_bridge_support/libc
+
+PRODUCT_PACKAGES += \
+    $(NATIVE_BRIDGE_PRODUCT_PACKAGES)
+
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.dalvik.vm.native.bridge=libndk_translation.so \
+    ro.dalvik.vm.isa.arm64=x86_64 \
+    ro.dalvik.vm.isa.arm=x86 \
+    ro.enable.native.bridge.exec=1 \
+    ro.ndk_translation.version=0.2.3
+
 # Recovery
 PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/init/init.recovery.vboxware.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.vboxware.rc
@@ -64,3 +87,6 @@ PRODUCT_PACKAGES += \
 # Vendor service manager
 PRODUCT_PACKAGES += \
     vndservicemanager
+
+# Inherit from proprietary files
+$(call inherit-product, vendor/virt/virtio_x86_64/virtio_x86_64-vendor.mk)
