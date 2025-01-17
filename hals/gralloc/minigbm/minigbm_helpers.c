@@ -213,7 +213,7 @@ done:
 	return 0;
 }
 
-static int gbm_get_default_device_fd(void)
+PUBLIC int gbm_get_default_device_fd(void)
 {
 	DIR *dir;
 	int ret, fd, dfd = -1;

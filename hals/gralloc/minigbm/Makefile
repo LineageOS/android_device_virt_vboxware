@@ -38,21 +38,27 @@ endif
 ifdef DRV_VC4
 	CFLAGS += $(shell $(PKG_CONFIG) --cflags libdrm_vc4)
 endif
-ifdef DRV_VMWGFX
-	CFLAGS += $(shell $(PKG_CONFIG) --cflags libdrm)
-endif
 
 CPPFLAGS += $(PC_CFLAGS)
 LDLIBS += $(PC_LIBS)
 
-LIBDIR ?= /usr/lib/
+ifdef INSTALL_TO_SYSTEM
+	DESTDIR ?= /usr
+	DEB_HOST_MULTIARCH := $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
+	LIBDIR ?= lib/$(DEB_HOST_MULTIARCH)
+	INCLUDEDIR ?= include
+else
+	DESTDIR ?= $(OUT)/install
+	LIBDIR ?= /usr/lib
+	INCLUDEDIR ?= /usr/include
+endif
 
-GBM_VERSION_MAJOR := 1
-MINIGBM_VERSION := $(GBM_VERSION_MAJOR).0.0
+MINIGBM_VERSION_MAJOR := 1
+MINIGBM_VERSION := $(MINIGBM_VERSION_MAJOR).0.0
 MINIGBM_FILENAME := libminigbm.so.$(MINIGBM_VERSION)
 
-CC_LIBRARY($(MINIGBM_FILENAME)): LDFLAGS += -Wl,-soname,libgbm.so.$(GBM_VERSION_MAJOR)
-CC_LIBRARY($(MINIGBM_FILENAME)): $(C_OBJECTS)
+CC_LIBRARY($(MINIGBM_FILENAME)): LDFLAGS += -Wl,-soname,libminigbm.so.$(MINIGBM_VERSION_MAJOR)
+CC_LIBRARY($(MINIGBM_FILENAME)): $(C_OBJECTS) pkgconfig
 CC_STATIC_LIBRARY(libminigbm.pie.a): $(C_OBJECTS)
 
 all: CC_LIBRARY($(MINIGBM_FILENAME))
@@ -66,11 +72,40 @@ CXX_BINARY(gbm_unittest): $(UNITTEST_DEPS)
 clean: CLEAN(gbm_unittest)
 tests: TEST(CXX_BINARY(gbm_unittest))
 
+define pkgconfig_contents
+prefix=$(DESTDIR)
+exec_prefix=$${prefix}
+includedir=$${prefix}/$(INCLUDEDIR)
+libdir=$${prefix}/$(LIBDIR)
+
+Name: libminigbm
+Description: A small gbm implementation
+Version: 18.0.0
+Cflags: -I$${includedir}
+Libs: -L$${libdir} -lminigbm
+Requires.private: libdrm >= 2.4.50
+endef
+
+.PHONY: pkgconfig
+pkgconfig:
+	@echo "generating $(OUT)minigbm.pc"
+	$(file > $(OUT)/minigbm.pc,$(pkgconfig_contents))
+clean:
+	rm -f $(OUT)minigbm.pc
+
 install: all
 	mkdir -p $(DESTDIR)/$(LIBDIR)
 	install -D -m 755 $(OUT)/$(MINIGBM_FILENAME) $(DESTDIR)/$(LIBDIR)
-	ln -sf $(MINIGBM_FILENAME) $(DESTDIR)/$(LIBDIR)/libgbm.so
-	ln -sf $(MINIGBM_FILENAME) $(DESTDIR)/$(LIBDIR)/libgbm.so.$(GBM_VERSION_MAJOR)
-	install -D -m 0644 $(SRC)/gbm.pc $(DESTDIR)$(LIBDIR)/pkgconfig/gbm.pc
-	install -D -m 0644 $(SRC)/gbm.h $(DESTDIR)/usr/include/gbm.h
-	install -D -m 0644 $(SRC)/minigbm_helpers.h $(DESTDIR)/usr/include/minigbm/minigbm_helpers.h
+	ln -sf $(MINIGBM_FILENAME) $(DESTDIR)/$(LIBDIR)/libminigbm.so
+	ln -sf $(MINIGBM_FILENAME) $(DESTDIR)/$(LIBDIR)/libminigbm.so.$(MINIGBM_VERSION_MAJOR)
+	install -D -m 0644 $(OUT)/minigbm.pc $(DESTDIR)/$(LIBDIR)/pkgconfig/minigbm.pc
+	install -D -m 0644 $(SRC)/gbm.h $(DESTDIR)/$(INCLUDEDIR)/minigbm.h
+	install -D -m 0644 $(SRC)/minigbm_helpers.h $(DESTDIR)/$(INCLUDEDIR)/minigbm/minigbm_helpers.h
+
+uninstall:
+	rm $(DESTDIR)/$(LIBDIR)/$(MINIGBM_FILENAME)
+	rm $(DESTDIR)/$(LIBDIR)/libminigbm.so
+	rm $(DESTDIR)/$(LIBDIR)/libminigbm.so.$(MINIGBM_VERSION_MAJOR)
+	rm $(DESTDIR)/$(LIBDIR)/pkgconfig/minigbm.pc
+	rm $(DESTDIR)/$(INCLUDEDIR)/minigbm.h
+	rm $(DESTDIR)/$(INCLUDEDIR)/minigbm/minigbm_helpers.h
