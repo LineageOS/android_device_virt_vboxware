@@ -32,6 +32,10 @@ on late-fs
     # Mount RW partitions which need run fsck
     mount_all --late
 
+# GPU
+on early-init && property:ro.boot.gpu=vkms
+    exec u:r:modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules vkms.ko
+
 # Graphics (Composer)
 on init
     stop vendor.hwcomposer-2-1
