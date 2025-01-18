@@ -71,6 +71,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 endif
 
 # VINTF
-ODM_MANIFEST_SKUS := virtualbox vmware
-ODM_MANIFEST_VIRTUALBOX_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_virtualbox.xml
-ODM_MANIFEST_VMWARE_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_vmware.xml
+ODM_MANIFEST_SKUS := 3daccel no3daccel
+ODM_MANIFEST_3DACCEL_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_3daccel.xml
+ODM_MANIFEST_NO3DACCEL_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_no3daccel.xml
