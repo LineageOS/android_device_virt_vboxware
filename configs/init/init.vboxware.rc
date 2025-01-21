@@ -33,36 +33,46 @@ on late-fs
     mount_all --late
 
 # GPU
-on early-init && property:ro.boot.gpu=vkms
+on early-init
+    setprop ro.vendor.graphics.gpu ${ro.boot.gpu:-vmwgfx}
+
+on init && property:ro.vendor.graphics.gpu=vkms
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules vkms.ko
+
+# Graphics
+on early-boot && property:ro.vendor.graphics.gpu=vmwgfx
+    setprop ro.vendor.graphics ${ro.boot.graphics:-mesa}
 
 # Graphics (Composer)
 on init
     stop vendor.hwcomposer-2-1
     stop vendor.hwcomposer-2-4
 
-on late-init && property:ro.boot.product.hardware.sku=no3daccel
-    enable vendor.hwcomposer-2-1
-
-on late-init && property:ro.boot.product.hardware.sku=3daccel
+on late-init && property:ro.vendor.graphics.gpu=vmwgfx && property:ro.boot.product.hardware.sku=display_drm
     setprop ro.hardware.hwcomposer drm
     enable vendor.hwcomposer-2-4
 
+on late-init && property:ro.vendor.graphics.gpu=vmwgfx && property:ro.boot.product.hardware.sku=display_fb
+    enable vendor.hwcomposer-2-1
+
 # Graphics (Gralloc)
 on init
-    stop vendor.gralloc-2-0
     stop vendor.graphics.allocator.vboxware
+    stop vendor.gralloc-2-0
 
-on late-init && property:ro.boot.product.hardware.sku=no3daccel
-    enable vendor.gralloc-2-0
-
-on late-init && property:ro.boot.product.hardware.sku=3daccel
+on late-init && property:ro.boot.product.hardware.sku=display_drm
     enable vendor.graphics.allocator.vboxware
 
+on late-init && property:ro.boot.product.hardware.sku=display_fb
+    enable vendor.gralloc-2-0
+
 # Graphics (Mesa)
-on property:ro.vendor.graphics=mesa && property:ro.boot.product.hardware.sku=3daccel
+on property:ro.vendor.graphics.gpu=vkms && property:ro.boot.product.hardware.sku=display_drm && property:ro.vendor.graphics=mesa_swrast
+    setprop ro.hardware.gralloc minigbm_vboxware
+
+on property:ro.vendor.graphics.gpu=vmwgfx && property:ro.boot.product.hardware.sku=display_drm && property:ro.vendor.graphics=mesa
     setprop ro.hardware.gralloc minigbm_vboxware
     setprop ro.opengles.version 196609
 
-on property:ro.vendor.graphics=mesa_swrast && property:ro.boot.product.hardware.sku=3daccel
+on property:ro.vendor.graphics.gpu=vmwgfx && property:ro.boot.product.hardware.sku=display_drm && property:ro.vendor.graphics=mesa_swrast
     setprop ro.hardware.gralloc minigbm_vboxware

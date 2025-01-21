@@ -71,6 +71,6 @@ BOARD_VENDOR_SEPOLICY_DIRS += \
 endif
 
 # VINTF
-ODM_MANIFEST_SKUS := 3daccel no3daccel
-ODM_MANIFEST_3DACCEL_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_3daccel.xml
-ODM_MANIFEST_NO3DACCEL_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_no3daccel.xml
+ODM_MANIFEST_SKUS := display_drm display_fb
+ODM_MANIFEST_DISPLAY_DRM_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_display_drm.xml
+ODM_MANIFEST_DISPLAY_FB_FILES := $(DEVICE_PATH)/configs/vintf/manifest_sku_display_fb.xml
