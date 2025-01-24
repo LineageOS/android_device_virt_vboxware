@@ -26,6 +26,13 @@ TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 # Bootconfig
 TARGET_BOOTCONFIG_FILES += $(DEVICE_PATH)/configs/misc/bootconfig.txt
 
+# Disk
+$(call soong_config_set,VIRT_PREINSTALL_CHECK,BOOT_DISK_NAME,sda)
+$(call soong_config_set,VIRT_PREINSTALL_CHECK,USERDATA_DISK_NAME,sdb)
+
+# Display
+$(call soong_config_set,VIRT_PREINSTALL_CHECK,DRM_CARD_NAME,vmwgfx)
+
 # Fstab
 ifeq ($(AB_OTA_UPDATER),true)
 $(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,ab)
@@ -42,6 +49,9 @@ TARGET_GRUB_ARCH := x86_64-efi
 # Kernel
 BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1
+
+BOARD_KERNEL_CMDLINE_INSTALL += \
+    console=tty0
 
 BOARD_KERNEL_IMAGE_NAME := bzImage
 
