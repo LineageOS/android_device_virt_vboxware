@@ -7,5 +7,5 @@ service create_partition_table /system/bin/sh -e /system/bin/create_partition_ta
     oneshot
     disabled
 
-on property:ro.boot.install=1
+on early-fs
     start create_partition_table
