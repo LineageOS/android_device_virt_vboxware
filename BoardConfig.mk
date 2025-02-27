@@ -7,6 +7,10 @@
 # Boot manager
 TARGET_BOOT_MANAGER := grub
 
+# GRUB
+TARGET_GRUB_ARCH := x86_64-efi
+TARGET_GRUB_2ND_ARCH := i386-pc
+
 # Inherit from common
 include device/virt/virt-common/BoardConfigVirtCommon.mk
 
@@ -36,9 +40,6 @@ endif
 # Graphics (Mesa)
 BOARD_MESA3D_USES_MESON_BUILD := true
 BOARD_MESA3D_GALLIUM_DRIVERS := svga
-
-# GRUB
-TARGET_GRUB_ARCH := x86_64-efi
 
 # Kernel
 BOARD_KERNEL_CMDLINE += \
