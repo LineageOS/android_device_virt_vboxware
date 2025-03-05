@@ -45,6 +45,9 @@ BOARD_MESA3D_GALLIUM_DRIVERS := svga
 BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1
 
+BOARD_KERNEL_CMDLINE_RECOVERY += \
+    console=tty0
+
 BOARD_KERNEL_IMAGE_NAME := bzImage
 
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
