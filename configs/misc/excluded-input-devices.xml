@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<devices>
+    <device name="VirtualBox mouse integration"/>
+    <device name="VirtualBox USB Multi-Touch"/>
+    <device name="VirtualBox USB Multi-Touch UNKNOWN"/>
+    <device name="VirtualBox USB Tablet"/>
+    <device name="VirtualBox USB Touchpad"/>
+    <device name="VirtualBox USB Touchpad UNKNOWN"/>
+</devices>
