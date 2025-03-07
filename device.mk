@@ -60,7 +60,8 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Tablet to multitouch
 PRODUCT_PACKAGES += \
-    tablet2multitouch_vboxware
+    tablet2multitouch_vboxware \
+    tablet2multitouch_vboxware_recovery
 
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
