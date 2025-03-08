@@ -1,0 +1,25 @@
+cc_defaults {
+    name: "vboxtablet2multitouch_defaults",
+    srcs: [
+        "vboxtablet2multitouch.c",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libtablet2multitouch",
+    ],
+}
+
+cc_binary {
+    name: "vboxtablet2multitouch",
+    defaults: ["vboxtablet2multitouch_defaults"],
+    init_rc: ["vboxtablet2multitouch.rc"],
+    vendor: true,
+}
+
+cc_binary {
+    name: "vboxtablet2multitouch_recovery",
+    stem: "vboxtablet2multitouch",
+    defaults: ["vboxtablet2multitouch_defaults"],
+    init_rc: ["vboxtablet2multitouch.recovery.rc"],
+    recovery: true,
+}
