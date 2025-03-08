@@ -21,6 +21,16 @@
 #define LOG_INFO(...) KLOG_INFO(LOG_TAG, __VA_ARGS__)
 #endif
 
+static const struct uinput_setup usetup = {
+        .id =
+                {
+                        .bustype = BUS_VIRTUAL,
+                        .vendor = 0xCAFE,
+                        .product = 0x7110,
+                },
+        .name = "vboxware-tablet2multitouch",
+};
+
 int main() {
     char buf[64];
     fd_set read_fds;
@@ -63,7 +73,8 @@ device_found:
     }
 
     // Setup uinput device
-    if (libtablet2multitouch_setup_uinput_device(&uinput_fd, &abs_x_info, &abs_y_info) < 0) {
+    if (libtablet2multitouch_setup_uinput_device(&uinput_fd, &usetup, &abs_x_info, &abs_y_info) <
+        0) {
         LOG_ERROR("Failed to setup uinput device\n");
         return EXIT_FAILURE;
     }
