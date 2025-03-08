@@ -1,2 +1,2 @@
 # Recovery
-ro.minui.blacklist_input_devices=VirtualBox mouse integration,VirtualBox USB Multi-Touch,VirtualBox USB Multi-Touch UNKNOWN,VirtualBox USB Tablet,VirtualBox USB Touchpad,VirtualBox USB Touchpad UNKNOWN,VirtualPS/2 VMware VMMouse
+ro.minui.blacklist_input_devices=ImExPS/2 Generic Explorer Mouse,VirtualBox mouse integration,VirtualBox USB Multi-Touch,VirtualBox USB Multi-Touch UNKNOWN,VirtualBox USB Tablet,VirtualBox USB Touchpad,VirtualBox USB Touchpad UNKNOWN,VirtualPS/2 VMware VMMouse
