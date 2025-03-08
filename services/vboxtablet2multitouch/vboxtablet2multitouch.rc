@@ -1,0 +1,5 @@
+service vendor.vboxtablet2multitouch /vendor/bin/vboxtablet2multitouch
+    class core
+    user uhid
+    group uhid input
+    oneshot

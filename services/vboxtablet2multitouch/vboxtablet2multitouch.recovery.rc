@@ -1,4 +1,4 @@
-service tablet2multitouch_vboxware /system/bin/tablet2multitouch_vboxware
+service vboxtablet2multitouch /system/bin/vboxtablet2multitouch
     user uhid
     group uhid input
     seclabel u:r:tablet2multitouch:s0
