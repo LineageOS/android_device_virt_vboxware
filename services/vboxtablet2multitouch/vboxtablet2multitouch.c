@@ -152,7 +152,7 @@ device_found:
             if (fd_tablet >= 0 && FD_ISSET(fd_tablet, &read_fds)) {
                 sz = read(fd_tablet, &event, sizeof(event));
                 if (sz == sizeof(event)) {
-                    if (event.type == EV_ABS) {
+                    if (event.type == EV_ABS || event.type == EV_SYN) {
                         use_mouse = false;
                         libtablet2multitouch_handle_event(uinput_fd, &event);
                     }
@@ -164,7 +164,8 @@ device_found:
             if (FD_ISSET(fd_mouse, &read_fds)) {
                 sz = read(fd_mouse, &event, sizeof(event));
                 if (sz == sizeof(event)) {
-                    if (fd_tablet >= 0 && !use_mouse && event.type == EV_KEY) {
+                    if (fd_tablet >= 0 && !use_mouse &&
+                        (event.type == EV_KEY || event.type == EV_SYN)) {
                         libtablet2multitouch_handle_event(uinput_fd, &event);
                     } else {
                         if (event.type == EV_REL) use_mouse = true;
