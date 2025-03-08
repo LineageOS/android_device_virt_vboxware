@@ -22,40 +22,28 @@
 #endif
 
 int main() {
+    char buf[64];
+    fd_set read_fds;
     int fd_abs = -1, fd_key = -1, tmp_fd, uinput_fd;
     ssize_t sz = 0;
     struct input_absinfo abs_x_info, abs_y_info;
     struct input_event event;
-    char device_path[64];
-    fd_set read_fds;
 
-    // Find the evdev device path
-    for (int i = 0; i < 64; ++i) {
-        snprintf(device_path, sizeof(device_path), "/dev/input/event%d", i);
-        tmp_fd = open(device_path, O_RDONLY | O_NONBLOCK);
+    // Find source input devices
+    for (int i = 0; i < 10; ++i) {
+        snprintf(buf, sizeof(buf), "/dev/input/event%d", i);
+        tmp_fd = open(buf, O_RDONLY | O_NONBLOCK);
         if (tmp_fd < 0) continue;
 
-        ioctl(tmp_fd, EVIOCGNAME(sizeof(device_path)), device_path);
-
-        if (!strcmp(device_path, "ImExPS/2 Generic Explorer Mouse")) {
+        ioctl(tmp_fd, EVIOCGNAME(sizeof(buf)), buf);
+        if (!strcmp(buf, "ImExPS/2 Generic Explorer Mouse")) {
             LOG_INFO("Found source input device for EV_KEY\n");
             fd_key = tmp_fd;
-        } else if (!strcmp(device_path, "VirtualBox mouse integration")) {
+        } else if (!strcmp(buf, "VirtualBox mouse integration")) {
             LOG_INFO("Found source input device for EV_ABS\n");
             fd_abs = tmp_fd;
         }
 
-        if (flock(tmp_fd, LOCK_EX | LOCK_NB) < 0) {
-            if (errno == EWOULDBLOCK) {
-                LOG_ERROR("Device is already in use\n");
-            } else {
-                LOG_ERROR("Failed to lock device\n");
-            }
-            close(tmp_fd);
-            return EXIT_FAILURE;
-        }
-
-        tmp_fd = -1;
         if (fd_abs >= 0 && fd_key >= 0) goto device_found;
     }
 
@@ -82,7 +70,7 @@ device_found:
 
     // Receive and process events
     tmp_fd = (fd_abs > fd_key ? fd_abs : fd_key) + 1;
-    while (1) {
+    while (true) {
         FD_ZERO(&read_fds);
         FD_SET(fd_abs, &read_fds);
         FD_SET(fd_key, &read_fds);
@@ -95,7 +83,7 @@ device_found:
                         libtablet2multitouch_handle_event(uinput_fd, &event);
                     }
                 } else if (sz < 0 && errno != EAGAIN) {
-                    LOG_ERROR("read ABS\n");
+                    LOG_ERROR("Failed to read EV_ABS event\n");
                     break;
                 }
             }
@@ -106,7 +94,7 @@ device_found:
                         libtablet2multitouch_handle_event(uinput_fd, &event);
                     }
                 } else if (sz < 0 && errno != EAGAIN) {
-                    LOG_ERROR("read KEY\n");
+                    LOG_ERROR("Failed to read EV_KEY event\n");
                     break;
                 }
             }
