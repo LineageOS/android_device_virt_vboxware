@@ -10,8 +10,8 @@ USES_DEVICE_VIRT_VBOXWARE := true
 TARGET_BOOT_MANAGER := grub
 
 # GRUB
-TARGET_GRUB_ARCH := x86_64-efi
-TARGET_GRUB_2ND_ARCH := i386-pc
+TARGET_GRUB_ARCH ?= x86_64-efi
+TARGET_GRUB_2ND_ARCH ?= i386-pc
 
 # Inherit from common
 include device/virt/virt-common/BoardConfigVirtCommon.mk
