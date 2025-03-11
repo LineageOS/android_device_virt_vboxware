@@ -10,7 +10,7 @@
 
 #include <libtablet2multitouch.h>
 
-#define LOG_TAG "vboxtablet2multitouch"
+#define LOG_TAG "tablet2multitouch_vboxware"
 
 #ifdef DEBUG
 #define LOG_ERROR(...) fprintf(stderr, LOG_TAG ": " __VA_ARGS__)
@@ -35,7 +35,7 @@ static const struct uinput_setup usetup_multitouch = {
                         .vendor = 0xCAFE,
                         .product = 0x7110,
                 },
-        .name = "vboxware-vboxtablet2multitouch",
+        .name = "vboxware-tablet2multitouch",
 };
 
 static const struct uinput_setup usetup_mouse = {
@@ -45,7 +45,7 @@ static const struct uinput_setup usetup_mouse = {
                         .vendor = 0xCAFE,
                         .product = 0x7111,
                 },
-        .name = "vboxware-vboxtablet2multitouch-mouse",
+        .name = "vboxware-tablet2multitouch-mouse",
 };
 
 static int mouse_setup_uinput_device(void) {
