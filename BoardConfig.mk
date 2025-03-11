@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+USES_DEVICE_VIRT_VBOXWARE := true
+
 # Boot manager
 TARGET_BOOT_MANAGER := grub
 
@@ -13,8 +15,6 @@ TARGET_GRUB_2ND_ARCH ?= i386-pc
 
 # Inherit from common
 include device/virt/virt-common/BoardConfigVirtCommon.mk
-
-USES_DEVICE_VIRT_VBOXWARE := true
 
 # Arch
 TARGET_CPU_ABI := x86_64
