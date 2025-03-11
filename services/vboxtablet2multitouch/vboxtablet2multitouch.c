@@ -21,6 +21,13 @@
 #define LOG_INFO(...) KLOG_INFO(LOG_TAG, __VA_ARGS__)
 #endif
 
+#define BITS_PER_LONG (sizeof(unsigned long) * 8)
+#define BITS_TO_LONGS(bits) (((bits) + BITS_PER_LONG - 1) / BITS_PER_LONG)
+
+static bool test_bit(size_t bit, unsigned long* array) {
+    return (array[bit / BITS_PER_LONG] & (1UL << (bit % BITS_PER_LONG))) != 0;
+}
+
 static const struct uinput_setup usetup_multitouch = {
         .id =
                 {
@@ -86,6 +93,7 @@ int main() {
     ssize_t sz = 0;
     struct input_absinfo abs_x_info, abs_y_info;
     struct input_event event;
+    unsigned long ev_bits[BITS_TO_LONGS(EV_MAX)];
 
     // Find source input devices
     for (int i = 0; i < 10; ++i) {
@@ -94,11 +102,21 @@ int main() {
         if (tmp_fd < 0) continue;
 
         ioctl(tmp_fd, EVIOCGNAME(sizeof(buf)), buf);
-        if (!strcmp(buf, "ImExPS/2 Generic Explorer Mouse")) {
-            LOG_INFO("Found source mouse input device\n");
+        if (!strcmp(buf, "VMware VMware Virtual USB Mouse")) {
+            if (ioctl(tmp_fd, EVIOCGBIT(0, sizeof(ev_bits)), ev_bits) != -1) {
+                if (test_bit(EV_ABS, ev_bits)) {
+                    LOG_INFO("Found source VMware tablet input device\n");
+                    fd_tablet = tmp_fd;
+                } else if (test_bit(EV_REL, ev_bits)) {
+                    LOG_INFO("Found source VMware mouse input device\n");
+                    fd_mouse = tmp_fd;
+                }
+            }
+        } else if (!strcmp(buf, "ImExPS/2 Generic Explorer Mouse")) {
+            LOG_INFO("Found source VirtualBox mouse input device\n");
             fd_mouse = tmp_fd;
         } else if (!strcmp(buf, "VirtualBox mouse integration")) {
-            LOG_INFO("Found source tablet input device\n");
+            LOG_INFO("Found source VirtualBox tablet input device\n");
             fd_tablet = tmp_fd;
         }
 
