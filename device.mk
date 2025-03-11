@@ -36,7 +36,7 @@ PRODUCT_PACKAGES += \
 
 # Input
 PRODUCT_COPY_FILES += \
-    $(DEVICE_PATH)/../virt-common/configs/input/virt_tablet2multitouch.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vboxware_vboxtablet2multitouch.idc \
+    $(DEVICE_PATH)/../virt-common/configs/input/virt_tablet2multitouch.idc:$(TARGET_COPY_OUT_VENDOR)/usr/idc/vboxware_tablet2multitouch.idc \
     $(DEVICE_PATH)/configs/input/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
 # Kernel
@@ -61,8 +61,8 @@ PRODUCT_SOONG_NAMESPACES += \
 
 # Tablet to multitouch
 PRODUCT_PACKAGES += \
-    vboxtablet2multitouch \
-    vboxtablet2multitouch_recovery
+    tablet2multitouch_vboxware \
+    tablet2multitouch_vboxware_recovery
 
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
