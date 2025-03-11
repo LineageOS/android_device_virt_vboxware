@@ -103,6 +103,7 @@ int main() {
         }
 
         if (fd_tablet >= 0 && fd_mouse >= 0) goto device_found;
+        if (fd_tablet != tmp_fd && fd_mouse != tmp_fd) close(tmp_fd);
     }
 
     if (fd_mouse < 0) {
