@@ -8,4 +8,5 @@
     <device name="VirtualBox USB Touchpad"/>
     <device name="VirtualBox USB Touchpad UNKNOWN"/>
     <device name="VirtualPS/2 VMware VMMouse"/>
+    <device name="VMware VMware Virtual USB Mouse"/>
 </devices>
