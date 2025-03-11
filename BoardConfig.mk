@@ -30,6 +30,10 @@ TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 # Bootconfig
 TARGET_BOOTCONFIG_FILES += $(DEVICE_PATH)/configs/misc/bootconfig.txt
 
+ifneq ($(USES_DEVICE_VIRT_VBOXWARE_ARM64ONLY),true)
+TARGET_BOOTCONFIG_FILES += $(DEVICE_PATH)/configs/misc/bootconfig_x86.txt
+endif
+
 # Fstab
 ifeq ($(AB_OTA_UPDATER),true)
 $(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,ab)
@@ -41,8 +45,10 @@ endif
 BOARD_MESA3D_GALLIUM_DRIVERS += svga
 
 # Kernel
+ifneq ($(USES_DEVICE_VIRT_VBOXWARE_ARM64ONLY),true)
 BOARD_KERNEL_CMDLINE += \
     8250.nr_uarts=1
+endif
 
 BOARD_KERNEL_CMDLINE_RECOVERY += \
     console=tty0
