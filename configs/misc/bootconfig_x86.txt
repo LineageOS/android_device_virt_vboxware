@@ -1,0 +1,1 @@
+androidboot.console = ttyS0

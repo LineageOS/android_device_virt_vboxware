@@ -1,3 +1,2 @@
-androidboot.console = ttyS0
 androidboot.hardware = vboxware
 androidboot.partition_map = "sdb,userdata"
