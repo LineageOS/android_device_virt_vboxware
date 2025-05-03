@@ -22,8 +22,6 @@ TARGET_ARCH := x86_64
 TARGET_ARCH_VARIANT := sandybridge
 
 # Boot manager
-TARGET_EFI_BOOT_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/boot/*.nsh)
-TARGET_EFI_INSTALL_SCRIPTS := $(wildcard $(DEVICE_PATH)/bootmgr/linux_efi_stub/install/*.nsh)
 TARGET_GRUB_BOOT_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 
