@@ -26,7 +26,10 @@ TARGET_GRUB_BOOT_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-boot.cfg
 TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 
 # Bootconfig
-TARGET_BOOTCONFIG_FILES += $(DEVICE_PATH)/configs/misc/bootconfig.txt
+BOARD_BOOTCONFIG += \
+    androidboot.console=ttyS0 \
+    androidboot.hardware=vboxware \
+    androidboot.partition_map=sdb,userdata
 
 # Fstab
 ifeq ($(AB_OTA_UPDATER),true)
