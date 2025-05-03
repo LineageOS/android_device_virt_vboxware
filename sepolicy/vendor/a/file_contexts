@@ -4,3 +4,4 @@
 /dev/block/sda6		u:object_r:boot_block_device:s0
 /dev/block/sda7		u:object_r:recovery_block_device:s0
 /dev/block/sda9		u:object_r:persist_block_device:s0
+/dev/block/sda11	u:object_r:boot_block_device:s0
