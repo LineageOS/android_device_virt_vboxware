@@ -21,11 +21,15 @@ PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl-2.1
 
+TARGET_GRAPHICS_ALLOCATOR_HAL := custom
+
 # Graphics (Composer)
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.composer@2.4-service \
     hwcomposer.drm
+
+TARGET_GRAPHICS_COMPOSER_HAL := custom
 
 # Init
 PRODUCT_COPY_FILES += \
