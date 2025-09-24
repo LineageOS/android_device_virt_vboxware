@@ -74,6 +74,8 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRX_8888
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += \
     $(DEVICE_PATH)/sepolicy/vendor
+    $(MAINLINE_COMMON_PATH)/sepolicy/vendor/minigbm \
+    external/minigbm/cros_gralloc/sepolicy
 
 ifeq ($(AB_OTA_UPDATER),true)
 BOARD_VENDOR_SEPOLICY_DIRS += \
