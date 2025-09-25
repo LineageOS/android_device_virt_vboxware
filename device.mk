@@ -74,7 +74,3 @@ PRODUCT_PACKAGES += \
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
     fstab.vboxware.vendor_ramdisk
-
-# Vendor service manager
-PRODUCT_PACKAGES += \
-    vndservicemanager
