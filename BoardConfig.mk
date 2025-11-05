@@ -52,8 +52,8 @@ BOARD_KERNEL_IMAGE_NAME := bzImage
 
 ifneq ($(wildcard $(TARGET_KERNEL_SOURCE)/Makefile),)
 TARGET_KERNEL_ARCH := x86
-TARGET_KERNEL_CONFIG += \
-    lineageos/vboxware.config
+TARGET_KERNEL_CONFIG_EXT += \
+    $(DEVICE_PATH)/configs/kernel/vboxware.config
 else ifneq ($(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/kernel),)
 BOARD_VENDOR_KERNEL_MODULES := \
     $(wildcard $(TARGET_PREBUILT_KERNEL_DIR)/*.ko)
