@@ -57,11 +57,10 @@ on late-init && property:ro.boot.product.hardware.sku=display_fb
 # Graphics (Composer)
 on init
     stop vendor.hwcomposer-2-1
-    stop vendor.hwcomposer-2-4
+    stop vendor.hwcomposer-3.drm_upstream
 
 on late-init && property:ro.boot.product.hardware.sku=display_drm
-    setprop ro.hardware.hwcomposer drm
-    enable vendor.hwcomposer-2-4
+    enable vendor.hwcomposer-3.drm_upstream
 
 on late-init && property:ro.boot.product.hardware.sku=display_fb
     enable vendor.hwcomposer-2-1

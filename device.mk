@@ -25,10 +25,11 @@ TARGET_GRAPHICS_ALLOCATOR_HAL := custom
 # Graphics (Composer)
 PRODUCT_PACKAGES += \
     android.hardware.graphics.composer@2.1-service \
-    android.hardware.graphics.composer@2.4-service \
-    hwcomposer.drm
+    android.hardware.composer.hwc3-service.drm_upstream
 
 TARGET_GRAPHICS_COMPOSER_HAL := custom
+
+$(call soong_config_set_bool,drm_hwcomposer_upstream,include_vintf_fragments,false)
 
 # Init
 PRODUCT_COPY_FILES += \
