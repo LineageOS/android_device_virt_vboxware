@@ -5,7 +5,7 @@ cc_defaults {
     ],
     shared_libs: [
         "libcutils",
-        "libtablet2multitouch",
+        "//hardware/mainline:libtablet2multitouch",
     ],
 }
 
