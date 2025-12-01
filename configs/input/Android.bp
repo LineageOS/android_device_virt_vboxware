@@ -1,0 +1,6 @@
+prebuilt_usr_idc {
+    name: "vboxware_tablet2multitouch.idc",
+    filename: "vboxware_tablet2multitouch.idc",
+    srcs: ["//device/mainline/common:tablet2multitouch_idc"],
+    vendor: true,
+}
