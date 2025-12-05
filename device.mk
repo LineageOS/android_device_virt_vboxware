@@ -10,17 +10,14 @@ DEVICE_PATH := device/virt/vboxware
 
 # Graphics (Allocator)
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator-service.minigbm_vboxware \
-    android.hardware.graphics.mapper@4.0-impl.minigbm_vboxware \
-    gralloc.minigbm_vboxware \
-    mapper.minigbm_vboxware
-
-PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
     android.hardware.graphics.mapper@2.0-impl-2.1
 
-TARGET_GRAPHICS_ALLOCATOR_HAL := custom
+TARGET_GRAPHICS_ALLOCATOR_HAL := minigbm-upstream
+TARGET_MINIGBM_UPSTREAM_INSIDE_APEX := false
+
+$(call soong_config_set_bool,minigbm_upstream,include_vintf_fragments,false)
 
 # Graphics (Composer)
 PRODUCT_PACKAGES += \

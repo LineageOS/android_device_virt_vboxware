@@ -1,4 +1,5 @@
 <manifest version="8.0" type="device">
+    <!-- From external/minigbm-upstream/cros_gralloc/aidl/allocator.minigbm_upstream.xml -->
     <hal format="aidl">
         <name>android.hardware.graphics.allocator</name>
         <version>2</version>
@@ -16,20 +17,12 @@
             <instance>default</instance>
         </interface>
     </hal>
-    <hal format="hidl">
-        <name>android.hardware.graphics.mapper</name>
-        <transport arch="32+64">passthrough</transport>
-        <version>4.0</version>
-        <interface>
-            <name>IMapper</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
+    <!-- From external/minigbm-upstream/cros_gralloc/mapper_stablec/mapper.minigbm_upstream.xml -->
     <hal format="native">
         <name>mapper</name>
         <version>5.0</version>
         <interface>
-            <instance>minigbm_vboxware</instance>
+            <instance>minigbm_upstream</instance>
         </interface>
     </hal>
 </manifest>

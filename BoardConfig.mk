@@ -37,6 +37,9 @@ else
 $(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,a)
 endif
 
+# Graphics (Allocator)
+$(call soong_config_set_string_list,minigbm_upstream,cflags,-DHAS_DMABUF_SYSTEM_HEAP -DDRV_VMWGFX)
+
 # Graphics (Mesa)
 BOARD_MESA3D_GALLIUM_DRIVERS += svga
 
@@ -72,9 +75,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRX_8888
 
 # SELinux
 BOARD_VENDOR_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy/vendor \
-    $(MAINLINE_COMMON_PATH)/sepolicy/vendor/minigbm \
-    external/minigbm/cros_gralloc/sepolicy
+    $(DEVICE_PATH)/sepolicy/vendor
 
 ifeq ($(AB_OTA_UPDATER),true)
 BOARD_VENDOR_SEPOLICY_DIRS += \
