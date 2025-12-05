@@ -37,6 +37,9 @@ else
 $(call soong_config_set,VBOXWARE_FSTAB,PARTITION_SCHEME,a)
 endif
 
+# Graphics (Allocator)
+$(call soong_config_set_string_list,minigbm_upstream,cflags,-DHAS_DMABUF_SYSTEM_HEAP -DDRV_VMWGFX)
+
 # Graphics (Mesa)
 BOARD_MESA3D_GALLIUM_DRIVERS += svga
 
