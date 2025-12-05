@@ -45,11 +45,11 @@ on early-boot && property:ro.vendor.graphics.gpu=vmwgfx
 
 # Graphics (Allocator)
 on init
-    stop vendor.graphics.allocator.vboxware
+    stop vendor.graphics.allocator.minigbm_upstream
     stop vendor.gralloc-2-0
 
 on late-init && property:ro.boot.product.hardware.sku=display_drm
-    enable vendor.graphics.allocator.vboxware
+    enable vendor.graphics.allocator.minigbm_upstream
 
 on late-init && property:ro.boot.product.hardware.sku=display_fb
     enable vendor.gralloc-2-0
