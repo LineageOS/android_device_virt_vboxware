@@ -8,6 +8,12 @@ $(call inherit-product, device/virt/virt-common/virt-common.mk)
 
 DEVICE_PATH := device/virt/vboxware
 
+# Audio
+ifeq ($(TARGET_AUDIO_HAL),tinyhal)
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/audio/audio.vboxware.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio.vboxware.xml
+endif
+
 # Graphics (Allocator)
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
