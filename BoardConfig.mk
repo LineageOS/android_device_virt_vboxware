@@ -26,7 +26,6 @@ TARGET_GRUB_INSTALL_CONFIGS += $(DEVICE_PATH)/bootmgr/grub/grub-install.cfg
 
 # Bootconfig
 BOARD_BOOTCONFIG += \
-    androidboot.console=ttyS0 \
     androidboot.hardware=vboxware \
     androidboot.partition_map=\"sdb,userdata\"
 
