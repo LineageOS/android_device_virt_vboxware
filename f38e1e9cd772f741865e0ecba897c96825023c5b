@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddefae56_8e2ae261",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 32245
+      },
+      "writtenOn": "2025-12-09T21:14:34Z",
+      "side": 1,
+      "message": "E tinyhal : pcm_open(out) failed: cannot set hw params: Invalid argument",
+      "revId": "f38e1e9cd772f741865e0ecba897c96825023c5b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
