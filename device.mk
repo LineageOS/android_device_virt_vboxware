@@ -17,6 +17,7 @@ PRODUCT_PACKAGES += \
 TARGET_GRAPHICS_ALLOCATOR_HAL := minigbm-upstream
 TARGET_MINIGBM_UPSTREAM_INSIDE_APEX := false
 
+$(call soong_config_set_bool,libui,legacy_gralloc,true)
 $(call soong_config_set_bool,minigbm_upstream,include_vintf_fragments,false)
 
 # Graphics (Composer)
