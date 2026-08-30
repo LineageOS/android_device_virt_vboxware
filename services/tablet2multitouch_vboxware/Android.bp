@@ -1,10 +1,15 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
 cc_defaults {
     name: "tablet2multitouch_vboxware_defaults",
     srcs: [
-        "tablet2multitouch_vboxware.c",
+        "tablet2multitouch_vboxware.cpp",
     ],
     shared_libs: [
-        "libcutils",
+        "libbase",
         "//hardware/mainline/common:libtablet2multitouch",
     ],
 }
