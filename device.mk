@@ -46,7 +46,7 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/init/init.recovery.vboxware.rc:$(TARGET_COPY_OUT_RECOVERY)/root/init.recovery.vboxware.rc
 
 # Shipping API level
-PRODUCT_SHIPPING_API_LEVEL := 33
+TARGET_FOLLOWS_LATEST_SHIPPING_API_LEVEL := true
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
@@ -60,3 +60,6 @@ PRODUCT_PACKAGES += \
 # Vendor ramdisk
 PRODUCT_PACKAGES += \
     fstab.vboxware.vendor_ramdisk
+
+# VINTF
+TARGET_FOLLOWS_LATEST_VINTF_TARGET_LEVEL := true
