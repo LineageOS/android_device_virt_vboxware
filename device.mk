@@ -9,25 +9,11 @@ $(call inherit-product, device/virt/virt-common/virt-common.mk)
 DEVICE_PATH := device/virt/vboxware
 
 # Graphics (Allocator)
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.mapper@2.0-impl-2.1
-
 TARGET_GRAPHICS_ALLOCATOR_HAL := minigbm-upstream
-TARGET_MINIGBM_UPSTREAM_INSIDE_APEX := false
-
-$(call soong_config_set_bool,libui,legacy_gralloc,true)
-$(call soong_config_set_bool,minigbm_upstream,include_vintf_fragments,false)
+TARGET_MINIGBM_PLATFORM := vmwgfx
 
 # Graphics (Composer)
-PRODUCT_PACKAGES += \
-    android.hardware.graphics.composer@2.1-service \
-    android.hardware.composer.hwc3-service.drm_upstream
-
-TARGET_GRAPHICS_COMPOSER_HAL := custom
-
-$(call soong_config_set_bool,drm_hwcomposer_upstream,include_vintf_fragments,false)
+TARGET_GRAPHICS_COMPOSER_HAL := drm_hwcomposer
 
 # Init
 PRODUCT_COPY_FILES += \
