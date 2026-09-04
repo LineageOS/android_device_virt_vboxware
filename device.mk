@@ -8,6 +8,9 @@ $(call inherit-product, device/virt/virt-common/virt-common.mk)
 
 DEVICE_PATH := device/virt/vboxware
 
+# Audio
+TARGET_AUDIO_MAINLINE_UCM_PROFILES := none
+
 # Graphics (Allocator)
 TARGET_GRAPHICS_ALLOCATOR_HAL := minigbm-upstream
 TARGET_MINIGBM_PLATFORM := vmwgfx
