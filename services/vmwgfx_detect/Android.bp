@@ -1,0 +1,10 @@
+cc_binary {
+    name: "vmwgfx_detect",
+    srcs: ["vmwgfx_detect.c"],
+    shared_libs: [
+        "libcutils",
+        "libdrm",
+        "liblog",
+    ],
+    vendor: true,
+}
