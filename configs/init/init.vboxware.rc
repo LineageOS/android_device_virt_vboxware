@@ -41,6 +41,7 @@ on init && property:ro.vendor.graphics.gpu=vkms
 
 # Graphics
 on early-boot && property:ro.vendor.graphics.gpu=vmwgfx
+    exec u:r:vendor_vmwgfx_detect:s0 system graphics -- /vendor/bin/vmwgfx_detect
     setprop ro.vendor.graphics ${ro.boot.graphics:-mesa}
 
 # Graphics (Mesa)

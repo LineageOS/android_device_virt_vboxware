@@ -11,6 +11,10 @@ DEVICE_PATH := device/virt/vboxware
 # Audio
 TARGET_AUDIO_MAINLINE_UCM_PROFILES := base
 
+# Graphics
+PRODUCT_PACKAGES += \
+    vmwgfx_detect
+
 # Graphics (Allocator)
 TARGET_GRAPHICS_ALLOCATOR_HAL := minigbm-upstream
 TARGET_MINIGBM_PLATFORM := vmwgfx

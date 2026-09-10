@@ -5,3 +5,4 @@
 
 # Executables
 /vendor/bin/tablet2multitouch_vboxware				u:object_r:tablet2multitouch_exec:s0
+/vendor/bin/vmwgfx_detect					u:object_r:vendor_vmwgfx_detect_exec:s0
